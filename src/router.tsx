@@ -11,6 +11,16 @@ import RootLayout from "./layouts/RootLayout"
 import ProductPage from "./views/ProductPage"
 import NewProductPage from "./views/NewProductPage"
 
+/**
+ * Actions
+ */
+import { action as productAction } from "./actions/productAction"
+
+/**
+ * Loaders
+ */
+import { loader as productLoader } from "./loaders/productLoader"
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,11 +28,13 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <ProductPage />
+        element: <ProductPage />,
+        loader: productLoader
       },
       {
         path: "producto/crear",
-        element: <NewProductPage />
+        element: <NewProductPage />,
+        action: productAction
       }
     ]
   }
