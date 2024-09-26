@@ -1,6 +1,6 @@
 import axios from "axios"
-import type { DraftProductType } from "../types"
-import { ProductsSchema } from "../schemas"
+import type { DraftProductType, ProductType } from "../types"
+import { ProductSchema, ProductsSchema } from "../schemas"
 
 export async function addProduct(productData: DraftProductType) {
   try {
@@ -16,10 +16,36 @@ export async function getProducts() {
     const url = `${import.meta.env.VITE_API_URL}/products`
     const { data } = await axios.get(url)
     const result = ProductsSchema.safeParse(data.data)
-    if(!result.success) {
+    if (!result.success) {
       throw new Error("Invalide type response")
     }
     return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getProductById(id: ProductType["id"]) {
+  try {
+    const url = `${import.meta.env.VITE_API_URL}/products/${id}`
+    const { data } = await axios.get(url)
+    const result = ProductSchema.safeParse(data.data)
+    if (!result.success) {
+      throw new Error("Invalid type response")
+    }
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function updateProduct(
+  id: ProductType["id"],
+  productData: DraftProductType
+) {
+  try {
+    const url = `${import.meta.env.VITE_API_URL}/products/${id}`
+    await axios.put(url, productData)
   } catch (error) {
     console.log(error)
   }

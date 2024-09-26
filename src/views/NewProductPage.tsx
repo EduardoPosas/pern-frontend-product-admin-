@@ -30,7 +30,7 @@ function NewProductPage() {
           <div className="grid gap-2">
             <label className="text-slate-800" htmlFor="price">Precio:</label>
             <input className="bg-slate-100 text-slate-800 p-2 rounded" type="number" step="0.01" id="price" name="price" placeholder="Ex. 10.0" />
-            {errors?.price && errors.price._errors.map(error => <Error>{error}</Error>)}
+            {errors?.price && errors.price._errors.map(error => <Error key={error}>{error}</Error>)}
           </div>
           <div className="flex justify-end">
             <button

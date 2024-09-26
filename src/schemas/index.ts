@@ -24,7 +24,19 @@ export const DraftProductSchema = z.object({
     }
 
     return parsed
-  })
+  }),
+  available: z.string().transform((val, ctx) => {
+    const booleanVal = val === "true" ? true : val === "false" ? false : undefined
+    if (typeof booleanVal !== "boolean") {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Tipo de dato incorrecto"
+      })
+
+      return z.NEVER
+    }
+    return booleanVal
+  }).optional()
 })
 
 export const ProductSchema = z.object({

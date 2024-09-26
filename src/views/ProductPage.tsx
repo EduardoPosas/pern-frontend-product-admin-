@@ -4,7 +4,6 @@ import ProductDetails from "../components/ProductDetails"
 
 function ProductPage() {
   const products = useLoaderData() as ProductType[]
-  console.log(products)
 
   return (
     <>
@@ -17,8 +16,8 @@ function ProductPage() {
           Agregar Producto
         </Link>
       </div>
-      <section className="overflow-x-auto">
-        <table className="mt-5 w-full min-w-[40rem] border-collapse">
+      <section className="mt-5 overflow-x-auto">
+        <table className="w-full min-w-[40rem] border-collapse">
           <thead className="bg-slate-800 text-white">
             <tr>
               <th className="py-4">Producto</th>
