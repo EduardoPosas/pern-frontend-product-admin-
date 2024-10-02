@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, json, redirect } from "react-router"
-import { addProduct, updateProduct } from "../services/productService"
+import { addProduct, updateProduct, deleteProduct, updateAvailability } from "../services/productService"
 import { DraftProductSchema } from "../schemas"
 
 export async function action({ request, params }: ActionFunctionArgs) {
@@ -37,6 +37,21 @@ export async function action({ request, params }: ActionFunctionArgs) {
     await updateProduct(id, result.data)
 
     return redirect("/")
+  }
+
+  if (intent === "delete") {
+    const id = Number(params.id)
+    if (isNaN(id) || id === 0) {
+      throw new Error("Invalid product id")
+    }
+    await deleteProduct(id)
+    return null
+  }
+
+  if (intent === "availability") {
+    const data = Object.fromEntries(formData)
+    await updateAvailability(Number(data.id))
+    return null
   }
 
   throw json(

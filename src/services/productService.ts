@@ -50,3 +50,21 @@ export async function updateProduct(
     console.log(error)
   }
 }
+
+export async function deleteProduct(id: ProductType["id"]) {
+  try {
+    const url = `${import.meta.env.VITE_API_URL}/products/${id}`
+    await axios.delete(url)
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function updateAvailability(id: ProductType["id"]) {
+  try {
+    const url = `${import.meta.env.VITE_API_URL}/products/${id}`
+    await axios.patch(url)
+  } catch (error) {
+    console.log(error)
+  }
+}

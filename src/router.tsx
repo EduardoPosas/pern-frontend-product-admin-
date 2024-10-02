@@ -31,7 +31,8 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <ProductPage />,
-        loader: productLoader
+        loader: productLoader,
+        action: productAction
       },
       {
         path: "producto/crear",
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
         path: "producto/:id/editar",
         element: <EditProductPage />,
         loader: productByIdLoader,
+        action: productAction
+      },
+      {
+        path: "producto/:id/eliminar",
         action: productAction
       }
     ]

@@ -28,10 +28,19 @@ function ProductPage() {
           </thead>
           <tbody>
             {
-              products.length > 0 &&
-              products.map(product => (
-                <ProductDetails key={product.id} product={product} />
-              ))
+              products.length > 0
+                ? (
+                  products.map(product => (
+                    <ProductDetails key={product.id} product={product} />
+                  ))
+                )
+                : (
+                  <tr>
+                    <td colSpan={4} className="py-16 text-center text-xl text-indigo-600 font-bold">
+                      Comienza agregando un nuevo producto
+                    </td>
+                  </tr>
+                )
             }
           </tbody>
         </table>
