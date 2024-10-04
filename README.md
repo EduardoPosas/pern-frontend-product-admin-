@@ -10,7 +10,7 @@ CRUD de productos utilizando React con TypeScript, routing lado cliente con Reac
 * Tailwind
 * Zod
 
-> [NOTE]
+> [!NOTE]
 > Ver las versiones en el package.json
 
 ## Características
