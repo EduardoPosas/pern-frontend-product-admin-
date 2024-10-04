@@ -24,14 +24,14 @@ CRUD de productos utilizando React con TypeScript, routing lado cliente con Reac
 
 1. Listar los productos y brindar la capacidad de poder Editar su información, Eliminar el propio producto y modificar su estatus con `fetcher.Form` de react-router.
 
-![Products list screen](/frontend/multimedia/product-list.jpeg)
+![Products list screen](./frontend/multimedia/product-list.jpeg)
 
 2. Funcionalidad de crear nuevos productos en la base de datos, validación lado cliente con Zod y navegación sin necesidad de recargar la página.
 
-![New product screen](/frontend/multimedia/new-product.jpeg)
+![New product screen](./frontend/multimedia/new-product.jpeg)
 
 3. Funcionalidad de editar la información de un producto particular y el uso de redirect en un action para navegar en la SPA.
 
-![Products edit screen](/frontend/multimedia/edit-product.jpeg)
+![Products edit screen](./frontend/multimedia/edit-product.jpeg)
 
 4. Funcionalidad de eliminar un producto de la base de datos y revalidar la información utilizando `fetcher.Form` de react-router.
