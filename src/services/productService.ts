@@ -22,6 +22,10 @@ export async function getProducts() {
     return result.data
   } catch (error) {
     console.log(error)
+    throw new Response(
+      "Error al solicitar los productos",
+      { status: 500 }
+    )
   }
 }
 

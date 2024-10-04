@@ -1,50 +1,37 @@
-# React + TypeScript + Vite
+# Administrador de Productos React - Typescript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CRUD de productos utilizando React con TypeScript, routing lado cliente con React-Router, Vite como bundle,  y Tailwind para los estilos de la app. Se utiliza Axios para realizar peticiones a una REST API y Zod para validar las respuestas de la API.
 
-Currently, two official plugins are available:
+## Tecnologías
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* React
+* TypeScript
+* React-Router-Dom
+* Tailwind
+* Zod
 
-## Expanding the ESLint configuration
+> ![NOTE]
+> Ver las versiones en el package.json
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Características
 
-- Configure the top-level `parserOptions` property like this:
+* Responsividad
+* Estilos con Tailwind
+* Code-splitting de las rutas usando `lazy`
+* Implementación de loaders y actions de react-router
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Flujo de la aplicación
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+1. Listar los productos y brindar la capacidad de poder Editar su información, Eliminar el propio producto y modificar su estatus con `fetcher.Form` de react-router.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+![Products list screen](/frontend/multimedia/product-list.jpeg)
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+2. Funcionalidad de crear nuevos productos en la base de datos, validación lado cliente con Zod y navegación sin necesidad de recargar la página.
+
+![New product screen](/frontend/multimedia/new-product.jpeg)
+
+3. Funcionalidad de editar la información de un producto particular y el uso de redirect en un action para navegar en la SPA.
+
+![Products edit screen](/frontend/multimedia/edit-product.jpeg)
+
+4. Funcionalidad de eliminar un producto de la base de datos y revalidar la información utilizando `fetcher.Form` de react-router.

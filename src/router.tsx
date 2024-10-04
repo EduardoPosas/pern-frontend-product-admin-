@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom"
+import { Suspense } from "react"
 
 /**
  * Layouts
@@ -6,11 +7,12 @@ import { createBrowserRouter } from "react-router-dom"
 import RootLayout from "./layouts/RootLayout"
 
 /** 
- * Pages
+ * Lazy Pages
 */
-import ProductPage from "./views/ProductPage"
-import NewProductPage from "./views/NewProductPage"
-import EditProductPage from "./views/EditProductPage"
+import { ProductPage, NewProductPage, EditProductPage } from "./utils/lazyImports"
+// import ProductPage from "./views/ProductPage"
+// import NewProductPage from "./views/NewProductPage"
+// import EditProductPage from "./views/EditProductPage"
 
 /**
  * Actions
@@ -23,6 +25,11 @@ import { action as productAction } from "./actions/productAction"
 import { loader as productLoader } from "./loaders/productLoader"
 import { loader as productByIdLoader } from "./loaders/productByIdLoader"
 
+/**
+ * Error elements
+ */
+import ErrorBoundary from "./components/ErrorBoundary"
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,18 +37,25 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <ProductPage />,
+        element: <Suspense fallback="Cargando ...">
+          <ProductPage />
+        </Suspense>,
         loader: productLoader,
-        action: productAction
+        action: productAction,
+        errorElement: <ErrorBoundary />
       },
       {
         path: "producto/crear",
-        element: <NewProductPage />,
+        element: <Suspense fallback="Cargando ...">
+          <NewProductPage />
+        </Suspense>,
         action: productAction
       },
       {
         path: "producto/:id/editar",
-        element: <EditProductPage />,
+        element: <Suspense fallback="Cargando ...">
+          <EditProductPage />
+        </Suspense>,
         loader: productByIdLoader,
         action: productAction
       },
